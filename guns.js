@@ -27,7 +27,7 @@ function drawGuns() {
         if (g.cooldown > 0) {
             g.cooldown--
         } else {
-            g.cooldown = 10 + 90 / ((1+upgrade.shootingSpeed.level)/4)
+            g.cooldown = 10 + 90 / ((1+upgrade.shootingSpeed.level)/6)
             bullets.push({x:g.x,y:g.y,r:g.r - Math.PI/2 ,velocity:10 + upgrade.bulletSpeed.level,opacity:1,hasHit:false})
             g.animationCooldown = 10
 

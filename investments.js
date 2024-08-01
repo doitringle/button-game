@@ -35,7 +35,19 @@ var investments = {
             $("#gunsSection")[0].hidden = false
             this.visible = false
             refreshInvestments()
-        }
+        },unlockGuns: {
+            name:"Unlock Guns",
+            description:"Better than cursors?",
+            price:100,
+            visible:false,
+            purchased:false,
+            runEffectsOnLoad:true,
+            effect: function() {
+                $("#gunsSection")[0].hidden = false
+                this.visible = false
+                refreshInvestments()
+            }
+        },
     },
 }
 

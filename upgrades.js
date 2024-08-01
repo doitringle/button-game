@@ -234,6 +234,7 @@ function purchase(upgradeString) {
 
         case "buttonValueIncrease":
             button.moneyReward *= 2
+            cooldownPenalty += 0.5
         break
         default:
             console.log("no special instructions for " + upgradeString)

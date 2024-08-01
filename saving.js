@@ -1,34 +1,34 @@
 // Thank you Kastark for getting me into incremental game development - and teaching me how to save and load.
 // Without you, this would have never existed. Nor would Sandwich-Game.
 // https://kastark.co.uk/articles/incrementals-part-2.html
-var gameVersion = '0.1.2'
+var gameVersion = '0.1.3'
 
 var autosaveEnabled = true
 
-var saveFile = {
-    money:money,
-    buttonMR:button.moneyReward,
-    buttonAVX:button.avx,
-    buttonAVY:button.avy,
-    upgrade:upgrade,
-    investments:investments,
-    guns:guns,
-    cursors:cursors,
-    autosaveEnabled:autosaveEnabled,
-    invBoxVisible:invBoxVisible,
-    gameVersion:gameVersion
-
-}
+var saveFile = {}
 
 
 function save() {
+    var upgradeToSave = {}
+    for(i in Object.keys(upgrade)) {
+        upgradeToSave[Object.keys(upgrade)[i]] = {level:upgrade[Object.keys(upgrade)[i]].level}
+        //this reduces the amount of data you have 2 save
+
+    }
+    var investmentsToSave = {}
+    for(i in Object.keys(investments)) {
+        investmentsToSave[Object.keys(investments)[i]] = {purchased:investments[Object.keys(investments)[i]].purchased, visible:investments[Object.keys(investments)[i]].visible,}
+        //this reduces the amount of data you have 2 save
+
+    }
+
     saveFile = {
         money:money,
         buttonMR:button.moneyReward,
         buttonAVX:button.avx,
         buttonAVY:button.avy,
-        upgrade:upgrade,
-        investments:investments,
+        upgrade:upgradeToSave,
+        investments:investmentsToSave,
         guns:guns,
         cursors:cursors,
         autosaveEnabled:autosaveEnabled,
@@ -47,10 +47,13 @@ function save() {
     $("#timeAtLastSave")[0].innerHTML = `${hours}:${minutes}:${seconds}`
 }   
 
-function load() {
+function load(isFromImport = false,importText = " ") {
 
-    var savegame = JSON.parse(localStorage.getItem("save"));
-
+    if(isFromImport) {
+        var savegame = JSON.parse(importText)
+    } else {
+        var savegame = JSON.parse(localStorage.getItem("save"));
+    }
     if (savegame != undefined) {
         if (gameVersion !== savegame.gameVersion) {
             alert(savegame.gameVersion + " -> " + gameVersion + " Game version mismatch. This save file may not work. (It probably will. This is just a courtesy warning.)")
@@ -123,6 +126,19 @@ $("#hardReset").on("click", function() {
         localStorage.removeItem("save")
         alert("Savegame deleted. Reload for it to take effect. If you change your mind, click 'Save' again.")
     } 
+})
+
+$("#export").on("click", function() {
+    navigator.clipboard.writeText(btoa(JSON.stringify(saveFile)));
+    alert("Save file copied to clipboard")
+})
+
+$("#import").on("click", function() {
+    var inputValue = window.prompt("Paste your save file code here:","");
+    if (inputValue !== null) {
+        inputValue = atob(inputValue)
+        load(true, inputValue)
+    }
 })
 
 setInterval(function() {  // autosaving in 3 lines :)
