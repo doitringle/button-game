@@ -7,16 +7,21 @@
     </head>
 
     <body>
-        <div class="noSelection">
+        <div class="noSelection box">
             <canvas id="screen" width="800" height="600"></canvas>
-            <div class="inline" title="Slower = easier to manually click. Faster = more corner hits.">Button Speed [<span id="speedCount">5</span>]</div>
-            <div class="inline"><button class="squareButton" id="modifySpeedPlus">+</button> <button class="squareButton" id="modifySpeedMinus">-</button></div>
 
             <br>
         </div> 
-        Framerate: <span id="framerate"></span>
-        <br>
-        Money: $<span id="moneyCount">0.00</span><hr>
+        <div class="box">
+            <div style="width:25%">
+                Framerate: <span id="framerate"></span><br>
+                Money: $<span id="moneyCount">0.00</span>
+            </div>
+            <div>
+                <div class='inline'title="Slower = easier to manually click. Faster = more corner hits.">Button Speed [<span id="speedCount">5</span>]</div>
+                <div><button class="squareButton" id="modifySpeedPlus">+</button> <button class="squareButton" id="modifySpeedMinus">-</button></div>    
+            </div>
+        </div><hr>
     <div class="box">
     <div id="leftSide">
         <h3>General Upgrades</h3>
