@@ -24,7 +24,7 @@ var clickedEffect = 0;
 
 var mouseIsInButton = false;
 
-const debug = true;
+const debug = false;
 if (!debug) {
     $('#debug')[0].innerHTML = ""
 }
