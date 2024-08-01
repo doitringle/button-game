@@ -25,19 +25,21 @@ var clickedEffect = 0;
 var mouseIsInButton = false;
 
 const debug = false;
-if (!debug) {
+if (!debug || !document.URL.startsWith("file")) {
     $('#debug')[0].innerHTML = ""
 }
+
+
 var floatingTexts = []
 
 var money = 0.00
 $("#moneyCount")[0].innerHTML = money.toFixed(2);
 
 var pos = { x: -1, y: -1 };
-$(document).mousemove(function(event) {
-    var rect = canvas.getBoundingClientRect()
-    pos.x = event.pageX - rect.left
-    pos.y = event.pageY -  rect.top
+
+$(canvas).mousemove(function(event) {
+    pos.x = event.pageX -10
+    pos.y = event.pageY -10
 });
 
 // screen click handler
@@ -237,7 +239,7 @@ function draw(evt) {
         }
     }
 
-
+    //c.fillRect(pos.x-5,pos.y-5,10,10)
 
     button.x += button.vx/1.5
     button.y += button.vy/1.5
