@@ -25,9 +25,10 @@ var clickedEffect = 0;
 var mouseIsInButton = false;
 
 const debug = false;
-if (!debug) {
+if (!debug || !document.URL.startsWith("file")) {
     $('#debug')[0].innerHTML = ""
 }
+
 var floatingTexts = []
 
 var money = 0.00
