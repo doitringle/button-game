@@ -1,7 +1,7 @@
 // Thank you Kastark for getting me into incremental game development - and teaching me how to save and load.
 // Without you, this would have never existed. Nor would Sandwich-Game.
 // https://kastark.co.uk/articles/incrementals-part-2.html
-var gameVersion = '0.1.1'
+var gameVersion = '0.1.2'
 
 var autosaveEnabled = true
 
@@ -33,6 +33,7 @@ function save() {
         cursors:cursors,
         autosaveEnabled:autosaveEnabled,
         invBoxVisible:invBoxVisible,
+        cooldownPenalty:cooldownPenalty,
         gameVersion:gameVersion
     
     }
@@ -62,9 +63,12 @@ function load() {
             $("#speedCount")[0].innerHTML = Math.abs(button.avx)
         }
         if (typeof savegame.buttonAVY !== "undefined") button.avy = Math.abs(savegame.buttonAVY);
+        button.vx = button.avx
+        button.vy = button.avy  
         if (typeof savegame.guns !== "undefined") guns = savegame.guns;
         if (typeof savegame.invBoxVisible !== "undefined") invBoxVisible = savegame.invBoxVisible;
         if (typeof savegame.cursors !== "undefined") cursors = savegame.cursors;
+        if (typeof savegame.cooldownPenalty !== "undefined") cooldownPenalty = savegame.cooldownPenalty;
         if (typeof savegame.autosaveEnabled !== "undefined") autosaveEnabled = savegame.autosaveEnabled;
         $("#autosaveCheckbox")[0].checked = autosaveEnabled
 

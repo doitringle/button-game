@@ -125,6 +125,12 @@ $('#modifySpeedPlus').on("click", function() {
         } else {
             button.avy--
         }
+        var diff = Math.round(button.vy) - button.vy
+        button.vy = button.avy + diff
+        diff = Math.round(button.vx) - button.vx
+        button.vx = button.avx + diff
+
+
         $("#speedCount")[0].innerHTML = Math.abs(button.avx)
     }
 
@@ -143,6 +149,12 @@ $('#modifySpeedMinus').on("click", function() {
         } else {
             button.avy++
         }
+
+        var diff = Math.round(button.vy) - button.vy
+        button.vy = button.avy + diff
+        diff = Math.round(button.vx) - button.vx
+        button.vx = button.avx + diff
+
         $("#speedCount")[0].innerHTML = Math.abs(button.avx)
     }
 
