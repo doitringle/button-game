@@ -1,0 +1,114 @@
+<!-- https://trello.com/b/CXiTTDo3/bbi -->
+<HTML>
+    <head>
+        
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <title>Ringletech Software Presents</title>
+    </head>
+
+    <body>
+        <div class="noSelection">
+            <canvas id="screen" width="800" height="600"></canvas>
+            <div class="inline" title="Speed is updated when the button touches a side. Slower = easier to manually click. Faster = more corner hits.">Button Speed [<span id="speedCount">5</span>]</div>
+            <div class="inline"><button class="squareButton" id="modifySpeedPlus">+</button> <button class="squareButton" id="modifySpeedMinus">-</button></div>
+
+            <br>
+        </div> 
+        Framerate: <span id="framerate"></span>
+        <br>
+        Money: $<span id="moneyCount">0.00</span><hr>
+    <div class="box">
+    <div id="leftSide">
+        <h3>General Upgrades</h3>
+            <p>Hover buttons for detailed info.</p>
+            Cost: $<span id="speedVarianceCost">0.00</span> 
+            <button onClick="purchase('speedVariance')" id="speedVarianceUpgrade" title="Higher means you can make the button go faster or slower. For example, at level 1 you can make the speed 4 or 6.">Speed variance</button>
+            [<span id="speedVarianceLevel">0</span>]<br>
+
+            Cost: $<span id="buttonValueIncreaseCost">0.00</span> 
+            <button onClick="purchase('buttonValueIncrease')" id="buttonValueIncreaseUpgrade" title="Multiplies the value of the button.">Increase button value</button>
+            [<span id="buttonValueIncreaseLevel">0</span>]<br>
+
+            Cost: $<span id="cornerBoostCost">0.00</span> 
+            <button onClick="purchase('cornerBoost')" id="cornerBoostUpgrade" title="Increases the multiplier reward for hitting a corner.">Upgrade corner boost</button>
+            [<span id="cornerBoostLevel">0</span>]<br>
+
+            Cost: $<span id="cornerTimeCost">0.00</span> 
+            <button onClick="purchase('cornerTime')" id="cornerTimeUpgrade" title="Makes the corner boost last 1 second longer for each level.">Upgrade corner boost time</button>
+            [<span id="cornerTimeLevel">0</span>]<br>
+        <h3>Cursors</h3>
+
+
+        Cost: $<span id="cursorCost">0.00</span> 
+        <button id="cursorBuy" title="Buy and randomly place 1 cursor. When the button goes over the cursor, it will click.">Buy cursor</button>
+        [You have <span id="cursorCount">0</span> cursor(s)]<br>
+
+        Cost: $<span id="cursorSpeedCost">0.00</span> 
+        <button onClick="purchase('cursorSpeed')" id="cursorSpeedUpgrade" title="Reduce the cooldown time for cursor clicks.">Upgrade cursor speed</button>
+        [<span id="cursorSpeedLevel">0</span>]<br>
+        <div id="gunsSection" hidden="true">
+            <h3>Guns</h3>
+
+            Cost: $<span id="gunCost">0.00</span> 
+            <button id="gunBuy" title="Buy and randomly place 1 gun turret. It will shoot at the button.">Buy gun</button>
+            [You have <span id="gunCount">0</span> gun(s)]<br>
+
+            Cost: $<span id="shootingSpeedCost">0.00</span> 
+            <button onClick="purchase('shootingSpeed')" id="shootingSpeedUpgrade" title="What it says.">Increase gun shooting speed</button>
+            [<span id="shootingSpeedLevel">0</span>]<br>
+
+            Cost: $<span id="bulletSpeedCost">0.00</span> 
+            <button onClick="purchase('bulletSpeed')" id="bulletSpeedUpgrade" title="When bullets go faster, they whiff less often.">Increase bullet speed</button>
+            [<span id="bulletSpeedLevel">0</span>]<br>        
+
+            Cost: $<span id="bulletMultiplierCost">0.00</span> 
+            <button onClick="purchase('bulletMultiplier')" id="bulletMultiplierUpgrade" title="Bullets get more points. ">Upgrade bullet multiplier</button>
+            [<span id="bulletMultiplierLevel">0</span>]<br>
+        </div>
+        <h3>Options</h3>
+
+        <button onClick="save()">Save</button> <button onClick="load()">Load</button> <button id="hardReset">Hard reset</button><br>
+        <input id="autosaveCheckbox" type="checkbox" checked="true"> Autosave [Last save was at <span id="timeAtLastSave">never</span>]
+
+        <div id="debug">
+            <h3>Debug stuff below. Here be dragons!</h3>
+            <button onClick="updateMoney(1)">add $1</button>
+            <button onClick="updateMoney(1000000000000000000000000000000)">add large amount</button>
+            <button onClick="money = 0;updateMoney()">set money to 0</button> 
+            <button onClick="bonus = 360">Force corner hit</button> 
+            <button onClick="for(i=0;i<500;i++){cursors.push({x:800*Math.random(),y:600*Math.random(),cooldown:0,xp:0})}">Cursor stress test</button> 
+            <button onClick="for(i=0;i<250;i++){guns.push({x:800*Math.random(),y:600*Math.random(),cooldown:Math.random()*180})}">Gun stress test</button>
+
+        </div>
+    </div>
+        <div id="investmentsSection">
+            <h3>Investments</h3>
+
+            <div id="investmentsBox"></div>
+
+        </div>
+    </div>
+    </div>
+
+    <h6>A ringle production</h6>
+        <script type="text/javascript" src="jquery-3.7.1.min.js"></script>
+
+        <script type="text/javascript" src="main.js"></script>
+
+        <script type="text/javascript" src="upgrades.js"></script>
+
+        <script type="text/javascript" src="cursors.js"></script>
+
+        <script type="text/javascript" src="guns.js"></script>
+
+        <script type="text/javascript" src="investments.js"></script>
+
+        <script type="text/javascript" src="newsticker.js"></script>
+
+        <script type="text/javascript" src="saving.js"></script>
+
+    </body>
+</HTML>
+
+
+

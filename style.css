@@ -1,0 +1,55 @@
+canvas {
+    border: 2px solid black;
+    display:inline-block;
+    margin-right:10px;
+}
+.inline {
+    display:inline-block;
+}
+.squareButton {
+    width:30px;
+    height:30px
+}
+
+.noSelection {
+    user-select: none; /* standard syntax */
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+#investmentsBox {
+    border: 1px solid black;
+    margin:5px;
+    padding:5px;    
+    width:300px;
+    height:90%
+}
+#investmentsBox button {
+    width:100%;
+}
+
+#leftSide {
+    width:40%
+}
+
+.box {
+    display: flex;
+    flex-direction:box  
+  }
+ /*https://codepen.io/nowheddos/pen/NWgBXbP?editors=1010
+ Thank you for the cool looking buttons, past me.*/
+  button {
+    cursor: pointer;
+    font-family: "Rubik", sans-serif;
+    border-radius: 4px;
+    margin: 1px;
+    background-color: lightgray;
+  }
+  button:hover {
+    background-color: rgb(219, 219, 219);
+  }
+  button:active {
+    background-color: grey;
+  }
