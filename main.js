@@ -17,6 +17,25 @@ var button = {
     moneyReward:1.00,
     speed:1
 }
+var particle = [
+    /*{
+        x:400,
+        y:300,
+        size:20,
+        opacity:1,
+        color:"252, 186, 3"
+    }*/
+]
+
+function explode(x,y,color = "default",size = 15,opacity = 1) {
+
+    if (color == "default") {
+        "252,186,3"
+        color = 220 + (32 * Math.random()) + "," + 154 + (32 * Math.random()) + "," + 3 * Math.random()
+    }
+
+    particle.push({x:x,y:y,size:size,color:color,opacity:opacity})
+}
 var bonus = 0; // amount of frames corner bonus is active. if 0, there is no bonus active.
 
 var clickedEffect = 0;
@@ -78,8 +97,10 @@ function addFloatingText(x,y,text,time = 180,color = "#000000", font = "20px ser
 
 function scientific(x) {
     var exponent = Math.floor(0.001+Math.log(x) / Math.log(10))
-    if (x.toString()[1] != "e") {
+    if (x.toString()[1] != "e" && x.toString()[1] != ".") {
         return x.toString()[0] + "." + x.toString()[1] + "e" + exponent
+    } else if (x.toString()[1] == ".") {
+        return x.toString()[0] + "." + x.toString()[2] + "e" + exponent
     } else {
         return x.toString()[0] + ".0" + "e" + exponent
 
@@ -140,6 +161,25 @@ function draw(evt) {
     //clear canvas
     c.globalCompositeOperation = "destination-over";
     c.clearRect(0, 0, 800, 600);
+
+
+//particle rendering
+
+for(i in particle) {
+    p = particle[i]
+    p.size+=2
+    p.opacity -= 0.08
+    c.fillStyle = "rgba(" + p.color + "," + p.opacity + ")"
+    c.beginPath(    )
+    c.ellipse(p.x,p.y,p.size,p.size,0,0,360)
+    c.fill()
+
+    if (p.opacity <= 0) {
+        particle.splice(i,1)
+        i++
+    }
+
+}
 
 
     //c.fillStyle = "#000000";
@@ -238,6 +278,9 @@ function draw(evt) {
         }
     }
 
+
+
+
     //c.fillRect(pos.x-5,pos.y-5,10,10)
 
     button.x += button.vx/1.5
@@ -250,6 +293,7 @@ window.addEventListener('load', function () {
     load()
 
     draw()
+
     window.requestAnimationFrame(draw);
 
     console.log("Trans rights!")

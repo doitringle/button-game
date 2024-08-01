@@ -91,6 +91,7 @@ function drawBullets() {
         } 
 
         if (!b.hasHit && within(b.x,b.y,[button.x,button.y,100,80])) {
+            explode(b.x,b.y)
             b.hasHit = true
             b.velocity = -5
 
