@@ -29,7 +29,6 @@ if (!debug || !document.URL.startsWith("file")) {
     $('#debug')[0].innerHTML = ""
 }
 
-
 var floatingTexts = []
 
 var money = 0.00
