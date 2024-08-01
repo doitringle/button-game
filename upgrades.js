@@ -24,35 +24,35 @@ var upgrade = {
     cornerTime: {
         level:0,
         maxLevel:300,
-        baseCost:8.5,
+        baseCost:15,
         type:"exponential",
         inc:2 // linear: (level * baseCost * inc)
     },
     cursorSpeed: {
         level:0,
-        maxLevel:50,
-        baseCost:5,
+        maxLevel:150,
+        baseCost:10,
         type:"exponential",
         inc:1.2
     },
     shootingSpeed: {
         level:0,
         maxLevel:100,
-        baseCost:15,
+        baseCost:45,
         type:"exponential",
         inc:1.75
     },
     bulletSpeed: {
         level:0,
         maxLevel:50,
-        baseCost:20,
+        baseCost:75,
         type:"exponential",
         inc:1.5
     },
     bulletMultiplier: {
         level:0,
         maxLevel:50,
-        baseCost:20,
+        baseCost:100,
         type:"exponential",
         inc:2.25
     },
@@ -234,7 +234,7 @@ function purchase(upgradeString) {
 
         case "buttonValueIncrease":
             button.moneyReward *= 2
-            cooldownPenalty += 0.5
+            cooldownPenalty += 0.8
         break
         default:
             console.log("no special instructions for " + upgradeString)

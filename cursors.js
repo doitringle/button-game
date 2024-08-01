@@ -48,7 +48,7 @@ function drawCursors() {
             if (crs.cooldown <= 0) {
                 clickedEffect = 5
                 addFloatingText(crs.x,crs.y,"$" + n(updateMoney(level(crs.xp) * button.moneyReward)), 60, "#000000", "18px serif", true)
-                crs.cooldown = cooldownPenalty * 60 + 2000 / (5 + upgrade.cursorSpeed.level)
+                crs.cooldown = cooldownPenalty * 15 + 2000 / (5 + upgrade.cursorSpeed.level)
                 crs.xp += button.moneyReward
             }
         } else {

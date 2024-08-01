@@ -79,7 +79,7 @@ function addFloatingText(x,y,text,time = 180,color = "#000000", font = "20px ser
 function scientific(x) {
     var exponent = Math.floor(0.001+Math.log(x) / Math.log(10))
     if (x.toString()[1] != "e") {
-        return x.toString()[0] + "." + x.toString()[2] + "e" + exponent
+        return x.toString()[0] + "." + x.toString()[1] + "e" + exponent
     } else {
         return x.toString()[0] + ".0" + "e" + exponent
 

@@ -27,7 +27,7 @@ function drawGuns() {
         if (g.cooldown > 0) {
             g.cooldown--
         } else {
-            g.cooldown = 10 + 90 / ((1+upgrade.shootingSpeed.level)/6)
+            g.cooldown = 10 + 90 / ((1+upgrade.shootingSpeed.level)/6) + 5*cooldownPenalty
             bullets.push({x:g.x,y:g.y,r:g.r - Math.PI/2 ,velocity:10 + upgrade.bulletSpeed.level,opacity:1,hasHit:false})
             g.animationCooldown = 10
 
@@ -39,6 +39,9 @@ function drawGuns() {
         c.textAlign = 'center'
         c.fillStyle = "#000000" 
         c.fillText(Math.abs(g.cooldown / 60).toFixed(1), g.x,g.y+40)
+
+
+        //graphics inspired by Diep.io, no doubt.
 
         //draw circle middle (it is white)
         c.strokeStyle = "rgb(0,0,0)"

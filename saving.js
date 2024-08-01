@@ -1,7 +1,7 @@
 // Thank you Kastark for getting me into incremental game development - and teaching me how to save and load.
 // Without you, this would have never existed. Nor would Sandwich-Game.
 // https://kastark.co.uk/articles/incrementals-part-2.html
-var gameVersion = '0.1.3'
+var gameVersion = '0.1.4' // initial release
 
 var autosaveEnabled = true
 
